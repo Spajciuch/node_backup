@@ -1,0 +1,27 @@
+{
+  "name": "node_backup",
+  "version": "1.0.0",
+  "description": "Backup script for Linux server",
+  "main": "./dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "server",
+    "linux",
+    "backup",
+    "files"
+  ],
+  "author": "spyte",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.5.1"
+  },
+  "dependencies": {
+    "@types/archiver": "^6.0.2",
+    "archiver": "^7.0.1"
+  },
+  "bin": {
+    "node_backup": "./dist/app.js"
+  }
+}
