@@ -1,5 +1,6 @@
 # node_backup
-**node_backup** is simple CLI app for creating backups. It saves file or directory as `.zip` archive in location provided during setup. You can use it with arguments:
+**node_backup** is simple CLI app for creating backups. It saves file or directory as `.zip` archive in location provided during setup. You can use it with arguments:  
+
 -`node_backup -s` - enter setup (add/remove folders)
 -`node-backup ./` - add execution folder to backup
 * * * 
