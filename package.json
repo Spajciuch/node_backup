@@ -1,5 +1,5 @@
 {
-  "name": "node_backup",
+  "name": "@spyte/node_backup",
   "version": "1.0.0",
   "description": "Backup script for Linux server",
   "main": "./dist/app.js",
@@ -13,7 +13,7 @@
     "files"
   ],
   "author": "spyte",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@types/node": "^22.5.1"
   },
@@ -22,6 +22,14 @@
     "archiver": "^7.0.1"
   },
   "bin": {
-    "node_backup": "./dist/app.js"
-  }
+    "node_backup": "dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spajciuch/node_backup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Spajciuch/node_backup/issues"
+  },
+  "homepage": "https://github.com/Spajciuch/node_backup#readme"
 }
