@@ -2,7 +2,6 @@
 
 import { run_setup } from "./setup";
 import { run_backup } from "./backup";
-import { run_add } from "./add";
 
 import fs from "fs";
 
