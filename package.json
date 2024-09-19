@@ -1,6 +1,6 @@
 {
   "name": "@spyte/node_backup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Backup script for Linux server",
   "main": "./dist/app.js",
   "scripts": {
@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/Spajciuch/node_backup/issues"
   },
-  "homepage": "https://github.com/Spajciuch/node_backup#readme"
+  "homepage": "https://github.com/Spajciuch/node_backup#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
