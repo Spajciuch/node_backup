@@ -1,5 +1,5 @@
 {
-  "name": "@spyte/node_backup",
+  "name": "node_backupper",
   "version": "1.0.1",
   "description": "Backup script for Linux server",
   "main": "./dist/app.js",
