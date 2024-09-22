@@ -2,7 +2,6 @@
 
 import { run_setup } from "./setup";
 import { run_backup } from "./backup";
-
 import fs from "fs";
 
 const args = process.argv.splice(2);
@@ -26,6 +25,10 @@ switch (args[0]) {
     case "-add":
     case "./":
         run_setup("add");
+        break;
+    case "-i":
+    case "-interval":
+        run_setup("interval", args[1]);
         break;
     default:
         run_backup();

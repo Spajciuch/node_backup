@@ -1,13 +1,15 @@
 import * as fs from "fs";
+import { EventEmitter } from 'node:events';
 import { createInterface } from "readline";
 import { backup_entry, program_option } from "./types";
+import * as config_utils from "./config_utils";
 
 const readline = createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-export function run_setup(option: program_option = null) {
+export function run_setup(option: program_option = null, interval: program_option = null) {
     const backup_file = __dirname + "/backup_config.json";
 
     console.log("[setup] Running backup_service setup\n");
@@ -20,7 +22,7 @@ export function run_setup(option: program_option = null) {
                     case "1":
                         readline.question("Full path to original file or folder: ", originalPath => {
                             readline.question("Destination path: ", destinationPath => {
-                                add_entry(originalPath, destinationPath, backup_file);
+                                config_utils.add_entry(originalPath, destinationPath, backup_file, readline);
                             });
                         });
 
@@ -80,29 +82,19 @@ export function run_setup(option: program_option = null) {
             console.log("[setup] Adding this directory to backup database...");
             readline.question("Provide output directory for backup: ", destinationPath => {
                 const originalPath = process.cwd();
-                add_entry(originalPath, destinationPath, backup_file);
+                config_utils.add_entry(originalPath, destinationPath, backup_file, readline);
             });
             break;
+        case "interval":
+
+            if (!interval) {
+                readline.question("Interval [ms]: ", time => {
+                    config_utils.set_interval(Number(time), backup_file);
+                });
+            } else {
+                config_utils.set_interval(Number(interval), backup_file);
+            }
+
+            readline.close();
     }
-}
-
-function add_entry(originalPath: string, destinationPath: string, backup_file: string) {
-    const backup_object = {
-        originalPath: originalPath,
-        destinationPath: destinationPath
-    };
-
-    console.log(backup_object);
-    readline.question("\nDoes it look ok? [y/N]: ", final => {
-        readline.close();
-
-        if (final.toLowerCase() == "y") {
-            const raw_data = fs.readFileSync(backup_file);
-            const backup_data = JSON.parse(raw_data.toString());
-
-            backup_data.paths.push(backup_object);
-            fs.writeFileSync(backup_file, JSON.stringify(backup_data));
-
-        } else return console.log(`[setup] Closing setup...`);
-    });
 }

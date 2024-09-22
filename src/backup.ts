@@ -9,11 +9,18 @@ export function run_backup() {
     const raw_data = fs.readFileSync(backup_file);
     const backup_data = JSON.parse(raw_data.toString());
 
-    instantInterval(function () {
+    const backup_interval = instantInterval(function () {
         backup_data.paths.forEach((entry: backup_entry) => {
+            console.log("[backup] Started backup with interval of ", backup_data.interval);
             backup(entry.originalPath, entry.destinationPath);
         });
     }, backup_data.interval);
+
+    fs.watchFile(backup_file, () => {
+        clearInterval(backup_interval);
+        console.log("[backup] Killed previous interval, starting new due to settings change")
+        run_backup();
+    });
 }
 
 function backup(source: string, destination: string) {
@@ -58,5 +65,6 @@ function backup(source: string, destination: string) {
 
 function instantInterval(fn: Function, delay: number) {
     fn();
-    setInterval(fn, delay);
+    const backup_interval = setInterval(fn, delay);
+    return backup_interval;
 }
