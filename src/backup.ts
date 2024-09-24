@@ -1,10 +1,11 @@
 import * as fs from "fs";
 import archiver from "archiver";
+import * as path from "path";
 
 import { backup_entry } from "./types";
 
 export function run_backup() {
-    const backup_file = __dirname + "/backup_config.json";
+    const backup_file = path.join(__dirname, '..', 'backup_config.json');
 
     const raw_data = fs.readFileSync(backup_file);
     const backup_data = JSON.parse(raw_data.toString());

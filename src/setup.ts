@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { EventEmitter } from 'node:events';
+import * as path from "path";
 import { createInterface } from "readline";
 import { backup_entry, program_option } from "./types";
 import * as config_utils from "./config_utils";
@@ -10,7 +10,7 @@ const readline = createInterface({
 });
 
 export function run_setup(option: program_option = null, interval: program_option = null) {
-    const backup_file = __dirname + "/backup_config.json";
+    const backup_file = path.join(__dirname, '..', 'backup_config.json');
 
     console.log("[setup] Running backup_service setup\n");
 

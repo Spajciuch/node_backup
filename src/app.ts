@@ -4,10 +4,11 @@ import { run_setup } from "./setup";
 import { run_backup } from "./backup";
 import { run_help } from "./help";
 
+import * as path from "path";
 import fs from "fs";
 
 const args = process.argv.splice(2);
-const backup_file = __dirname + "/backup_config.json";
+const backup_file = path.join(__dirname, '..', 'backup_config.json');
 
 if (!fs.existsSync(backup_file)) {
     const example_json = {
