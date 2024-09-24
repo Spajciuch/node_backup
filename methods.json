@@ -1,0 +1,33 @@
+{
+    "methods": [
+        {
+            "description": "Enter setup creator and add folders to backup",
+            "arguments": [
+                "-s",
+                "-setup"
+            ]
+        },
+        {
+            "description": "Set time interval between backups in ms",
+            "arguments": [
+                "-i",
+                "-interval"
+            ],
+            "parameters": ["time in ms"]
+        },
+        {
+            "description": "Add specified folder to backup",
+            "arguments": [
+                "-a",
+                "-add"
+            ],
+            "parameters": ["full path to folder", "half path"]
+        },
+        {
+            "description": "Add current folder to backup",
+            "arguments": [
+                "./"
+            ]
+        }
+    ]
+}

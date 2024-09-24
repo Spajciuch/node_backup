@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import { Interface } from "readline";
-import { EventEmitter } from 'node:events';
 
 export function add_entry(originalPath: string, destinationPath: string, backup_file: string, readline: Interface) {
     const backup_object = {

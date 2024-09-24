@@ -2,6 +2,8 @@
 
 import { run_setup } from "./setup";
 import { run_backup } from "./backup";
+import { run_help } from "./help";
+
 import fs from "fs";
 
 const args = process.argv.splice(2);
@@ -30,6 +32,9 @@ switch (args[0]) {
     case "-interval":
         run_setup("interval", args[1]);
         break;
-    default:
+    case undefined: 
         run_backup();
+        break;
+    default:
+        run_help();
 };
